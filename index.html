@@ -147,12 +147,6 @@ Do not mistake any person to be us in what so ever way online without confirmati
         </div>
         <div class="footer-bottom">
             <p>© 2024 MONIMATRIX MULTIVENTURES. BN 7447941 (Registered by the Corporate Affairs Commission of Nigeria). All Rights Reserved.</p>
-            <p class="sticky-footer-text">
-                Monimatrix Multiventures trades Forex, provides copy trade and trains serious-minded individuals in Forex art. 
-                Our efforts and expectations are to add adorable value to investments from clients across the globe. 
-                Although Monimatrix Multiventures knows full well that trading the Forex market involves a high degree of risk, 
-                we are dedicated to softening the risks associated with it. However, we advise clients to invest only the funds they can afford to lose.
-            </p>
         </div>
     </footer>
     <section>
@@ -165,9 +159,15 @@ Do not mistake any person to be us in what so ever way online without confirmati
   </div>
 
   <script>
+    // Get references to the button and content
     const toggleButton = document.getElementById('toggleFooter');
     const footerContent = document.getElementById('footerContent');
 
+    // Ensure content is shown on page load
+    footerContent.classList.add('open');
+    toggleButton.textContent = '▼';
+
+    // Add click event listener for toggling
     toggleButton.addEventListener('click', () => {
       footerContent.classList.toggle('open');
       toggleButton.textContent = footerContent.classList.contains('open') ? '▼' : '▶';
