@@ -56,45 +56,58 @@ Do not mistake any person to be us in what so ever way online without confirmati
         </div>
     </section>
     <script>
-        const sections = {
-            one: false,
-            two: false,
-            three: false,
-            four: false,
-            five: false,
-            six: false,
-            seven: false,
-            eight: false,
-            nine: false,
-            ten: false,
-        };
+    document.addEventListener("DOMContentLoaded", () => {
+    const sections = {
+        one: true, // Section "one" is open by default
+        two: false,
+        three: false,
+        four: false,
+        five: false,
+        six: false,
+        seven: false,
+        eight: false,
+        nine: false,
+        ten: false,
+    };
 
-        function toggleSection(id) {
-            // Reset all sections
-            Object.keys(sections).forEach(key => {
-                document.getElementById(`desc-${key}`).classList.remove('about-item-open');
-                document.getElementById(`desc-${key}`).classList.add('about-item-close');
-                document.getElementById(`icon-${key}`).classList.remove('rotate-180');
-                document.getElementById(`icon-${key}`).classList.add('rotate-0');
-                sections[key] = false;
-            });
+    function toggleSection(id) {
+        const desc = document.getElementById(`desc-${id}`);
+        const icon = document.getElementById(`icon-${id}`);
 
-            // Toggle the clicked section
-            sections[id] = !sections[id];
-            const desc = document.getElementById(`desc-${id}`);
-            const icon = document.getElementById(`icon-${id}`);
-            if (sections[id]) {
-                desc.classList.remove('about-item-close');
-                desc.classList.add('about-item-open');
-                icon.classList.remove('rotate-0');
-                icon.classList.add('rotate-180');
-            } else {
-                desc.classList.remove('about-item-open');
-                desc.classList.add('about-item-close');
-                icon.classList.remove('rotate-180');
-                icon.classList.add('rotate-0');
-            }
+        // Toggle the clicked section
+        sections[id] = !sections[id];
+
+        if (sections[id]) {
+            desc.classList.remove('about-item-close');
+            desc.classList.add('about-item-open');
+            icon.classList.remove('rotate-0');
+            icon.classList.add('rotate-180');
+        } else {
+            desc.classList.remove('about-item-open');
+            desc.classList.add('about-item-close');
+            icon.classList.remove('rotate-180');
+            icon.classList.add('rotate-0');
         }
+    }
+
+    // Set default open state for all sections
+    Object.keys(sections).forEach(id => {
+        const desc = document.getElementById(`desc-${id}`);
+        const icon = document.getElementById(`icon-${id}`);
+
+        if (sections[id]) {
+            desc.classList.add('about-item-open');
+            icon.classList.add('rotate-180');
+        } else {
+            desc.classList.add('about-item-close');
+            icon.classList.add('rotate-0');
+        }
+    });
+
+    // Expose toggleSection globally
+    window.toggleSection = toggleSection;
+});
+
 
         function handleDownload() {
             const fileUrl = 'public/Agreement.pdf'; // Replace with your file path
