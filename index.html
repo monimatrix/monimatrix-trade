@@ -172,6 +172,14 @@ Do not mistake any person to be us in what so ever way online without confirmati
       footerContent.classList.toggle('open');
       toggleButton.textContent = footerContent.classList.contains('open') ? '▼' : '▶';
     });
+
+      // Add shaking animation at intervals
+    setInterval(() => {
+      toggleButton.classList.add('shake'); // Add the shake class
+      setTimeout(() => {
+        toggleButton.classList.remove('shake'); // Remove it after animation ends
+      }, 500); // Match the animation duration (0.5s)
+    }, 5000); // Shake every 5 seconds
   </script>
     </section>
 </body>
