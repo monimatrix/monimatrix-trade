@@ -168,7 +168,7 @@
   }
 
   a:hover {
-    text-decoration: underline;
+    text-decoration: none;
   }
 
   @media (max-width: 600px) {
